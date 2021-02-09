@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>todo_api.Domain</RootNamespace>
+    <AssemblyName>todo_api.Domain</AssemblyName>
+  </PropertyGroup>
+
+</Project>
