@@ -11,10 +11,12 @@ namespace todo_api.Application.Common.Interfaces
         Task<ApplicationUserDto> CheckUserPassword(string email, string password);
 
         Task<bool> IsInRoleAsync(string userId, string role);
+        
+        Task<bool> IsUserExist(string email);
 
         Task<bool> AuthorizeAsync(string userId, string policyName);
 
-        Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password);
+        Task<ApplicationUserDto> CreateUserAsync(string userName, string password);
 
         Task<Result> DeleteUserAsync(string userId);
     }

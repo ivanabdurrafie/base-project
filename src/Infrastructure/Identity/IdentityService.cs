@@ -1,4 +1,5 @@
-﻿using todo_api.Application.Common.Interfaces;
+﻿using System;
+using todo_api.Application.Common.Interfaces;
 using todo_api.Application.Common.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -28,9 +29,9 @@ namespace todo_api.Infrastructure.Identity
 
         public async Task<string> GetUserNameAsync(string userId)
         {
-            var user = await _userManager.Users.FirstAsync(u => u.Id == userId);
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == userId);
 
-            return user.UserName;
+            return user?.UserName;
         }
 
         public async Task<ApplicationUserDto> CheckUserPassword(string email, string password)
@@ -45,7 +46,7 @@ namespace todo_api.Infrastructure.Identity
             return null;
         }
 
-        public async Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password)
+        public async Task<ApplicationUserDto> CreateUserAsync(string userName, string password)
         {
             var user = new ApplicationUser
             {
@@ -55,7 +56,7 @@ namespace todo_api.Infrastructure.Identity
 
             var result = await _userManager.CreateAsync(user, password);
 
-            return (result.ToApplicationResult(), user.Id);
+            return new ApplicationUserDto { UserName = user.UserName, Email = user.Email, Id = user.Id};
         }
 
         public async Task<bool> IsInRoleAsync(string userId, string role)
@@ -63,6 +64,11 @@ namespace todo_api.Infrastructure.Identity
             var user = _userManager.Users.SingleOrDefault(u => u.Id == userId);
 
             return await _userManager.IsInRoleAsync(user, role);
+        }
+
+        public Task<bool> IsUserExist(string email)
+        {
+            return _userManager.Users.AnyAsync(u => u.Email.Equals(email));
         }
 
         public async Task<bool> AuthorizeAsync(string userId, string policyName)
