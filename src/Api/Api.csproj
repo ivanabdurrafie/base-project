@@ -40,4 +40,8 @@
     <RemoveDir Directories="$(OutDir)References" />
   </Target>
 
+  <ItemGroup>
+    <None Include="appsettings.Local.json" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
 </Project>
