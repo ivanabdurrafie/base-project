@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>todo_api.Domain.UnitTests</RootNamespace>
     <AssemblyName>todo_api.Domain.UnitTests</AssemblyName>
-
+    <IsPublishable>false</IsPublishable >
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 

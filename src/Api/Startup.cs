@@ -84,7 +84,6 @@ namespace todo_api.Api
             }
 
             app.UseHealthChecks("/health");
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseSwaggerUi3(settings =>

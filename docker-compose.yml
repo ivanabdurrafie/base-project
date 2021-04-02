@@ -2,19 +2,11 @@ version: '3.4'
 
 services:
   dotnet-todo-api:
-    image: ahmadilmanfadilah/dotnet-todo-api
-    build:
-      network: host
-      context: .
-      dockerfile: Dockerfile
+    image: ahmadilmanfadilah/dotnet-todo-api:#{Build.BuildId}#
     environment:
       - "UseInMemoryDatabase=false"
-      - "ConnectionStrings__DefaultConnection=Server=localhost;Database=todo_apiDb;User=sa;Password=${SQL_PASS};MultipleActiveResultSets=true"
+      - "ConnectionStrings__DefaultConnection=Server=host.docker.internal;Database=todo_apiDb;User=sa;Password=${SQL_PASS};MultipleActiveResultSets=true"
       - "IdentityServer__Key__Type=Development"
-    volumes:
-      - ~/.aspnet/https:/https:ro
-      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
     ports:
       - "5000:5000"
-      - "5001:5001"
     restart: on-failure
