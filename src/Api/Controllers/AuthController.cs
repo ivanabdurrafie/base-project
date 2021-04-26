@@ -7,7 +7,7 @@ namespace todo_api.Api.Controllers
 {
     public class AuthController : ApiControllerBase
     {
-        [HttpPost("locgin")]
+        [HttpPost("login")]
         public async Task<ActionResult<LoginResponse>> Login(ApplicationUserLoginQuery query)
         {
             return Ok(await Mediator.Send(query));
