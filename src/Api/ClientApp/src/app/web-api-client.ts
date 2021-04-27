@@ -33,7 +33,7 @@ export class AuthClient implements IAuthClient {
     }
 
     login(query: ApplicationUserLoginQuery): Observable<LoginResponse> {
-        let url_ = this.baseUrl + "/api/Auth/locgin";
+        let url_ = this.baseUrl + "/api/Auth/login";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(query);
