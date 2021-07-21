@@ -7,6 +7,9 @@ services:
       - "UseInMemoryDatabase=false"
       - "ConnectionStrings__DefaultConnection=Server=host.docker.internal;Database=todo_apiDb;User=sa;Password=${SQL_PASS};MultipleActiveResultSets=true"
       - "IdentityServer__Key__Type=Development"
+      - "JWT__Secret=Super_Secret_Key"
+      - "JWT__ValidIssuer=ValidIssuerNet"
+      - "JWT__ValidAudience=ValidAudienceNet"
     ports:
       - "5000:5000"
     restart: on-failure
