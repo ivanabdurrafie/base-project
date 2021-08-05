@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   dotnet-todo-api:
-    image: ahmadilmanfadilah/dotnet-todo-api:#{Build.BuildId}#
+    image: ahmadilmanfadilah/dotnet-todo-api:${Build.BuildId}
     environment:
       - "UseInMemoryDatabase=false"
       - "ConnectionStrings__DefaultConnection=Server=host.docker.internal;Database=todo_apiDb;User=sa;Password=${SQL_PASS};MultipleActiveResultSets=true"
