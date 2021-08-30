@@ -16,7 +16,6 @@ services:
       - db
     restart: on-failure
     networks:
-      - default
       - todo-api-network
 
   db:
@@ -25,7 +24,6 @@ services:
       - "SA_PASSWORD=#{SQL_PASS}#"
       - "ACCEPT_EULA=Y"
     networks:
-      - default
       - todo-api-network
 
 networks:
