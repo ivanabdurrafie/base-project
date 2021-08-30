@@ -5,7 +5,7 @@ services:
     image: 10.2.41.8:5000/rndad/dotnet-todo-api:#{Build.BuildNumber}#
     environment:
       - "UseInMemoryDatabase=false"
-      - "ConnectionStrings__DefaultConnection=Server=mssql;Database=todo_apiDb;User=sa;Password=${SQL_PASS};MultipleActiveResultSets=true"
+      - "ConnectionStrings__DefaultConnection=Server=mssql;Database=todo_apiDb;User=sa;Password=#{SQL_PASS}#;MultipleActiveResultSets=true"
       - "IdentityServer__Key__Type=Development"
       - "JWT__Secret=Super_Secret_Key"
       - "JWT__ValidIssuer=ValidIssuerNet"
