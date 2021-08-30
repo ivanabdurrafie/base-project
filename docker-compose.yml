@@ -30,4 +30,4 @@ services:
 
 networks:
   todo-api-network:
-  external: false
+    external: false
