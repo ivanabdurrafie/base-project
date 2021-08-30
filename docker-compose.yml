@@ -11,5 +11,5 @@ services:
       - "JWT__ValidIssuer=ValidIssuerNet"
       - "JWT__ValidAudience=ValidAudienceNet"
     ports:
-      - "5000:5000"
+      - "5001:5001"
     restart: on-failure
