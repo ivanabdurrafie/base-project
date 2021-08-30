@@ -15,9 +15,19 @@ services:
     depends_on:
       - db
     restart: on-failure
+    networks:
+      - default
+      - todo-api-network
 
   db:
     image: "mcr.microsoft.com/mssql/server:2019-latest"
     environment:
       - "SA_PASSWORD=#{SQL_PASS}#"
       - "ACCEPT_EULA=Y"
+    networks:
+      - default
+      - todo-api-network
+
+  networks:
+  todo-api-network:
+    external: false
