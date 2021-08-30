@@ -28,6 +28,6 @@ services:
       - default
       - todo-api-network
 
-  networks:
+networks:
   todo-api-network:
-    external: false
+  external: false
