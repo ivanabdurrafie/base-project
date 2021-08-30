@@ -2,10 +2,10 @@ version: '3.4'
 
 services:
   dotnet-todo-api:
-    image: 10.2.41.8:5000/rndad/dotnet-todo-api:#{Build.BuildNumber}#
+    image: "#{MY_REGISTRY}#/rndad/dotnet-todo-api:#{Build.BuildNumber}#"
     environment:
       - "UseInMemoryDatabase=false"
-      - "ConnectionStrings__DefaultConnection=Server=mssql;Database=todo_apiDb;User=sa;Password=#{SQL_PASS}#;MultipleActiveResultSets=true"
+      - "ConnectionStrings__DefaultConnection=Server=db;Database=todo_apiDb;User=sa;Password=#{SQL_PASS}#;MultipleActiveResultSets=true"
       - "IdentityServer__Key__Type=Development"
       - "JWT__Secret=Super_Secret_Key"
       - "JWT__ValidIssuer=ValidIssuerNet"
@@ -13,3 +13,12 @@ services:
     ports:
       - "5001:5001"
     restart: on-failure
+      depends_on:
+      - db
+    restart: on-failure
+
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    environment:
+      - "SA_PASSWORD=#{SQL_PASS}#"
+      - "ACCEPT_EULA=Y"
