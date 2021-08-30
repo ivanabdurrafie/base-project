@@ -12,7 +12,7 @@ services:
       - "JWT__ValidAudience=ValidAudienceNet"
     ports:
       - "5001:5001"
-      depends_on:
+    depends_on:
       - db
     restart: on-failure
 
